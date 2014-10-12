@@ -7,12 +7,17 @@ class NN_Perceptron
   
   public static void main(String[] args){}
   
-  void NN(int rows, int cols, String strings[]){
+  void NN(int rows, int cols){
+    matrix = new int[rows][cols];
+    inputs = new int[cols];
+    outputs = new int[rows];
+    strings = new String[rows];
     for(int i = 0; i < rows; i++) {
       strings[i]= "";
+      outputs[i] = 0; //initalizes all strings to "" and outputs to 0
       for(int j = 0; j< cols; j++) {  
-        matrix[i][j] = 0; } } //strings[] does not need to be passed as a parameter?
-  }//use new to create a matrix with row & cols as size
+        matrix[i][j] = 0; } } //no need to actually set anything to 0?
+  }
   
   
   int getMatrix(int row, int col){
