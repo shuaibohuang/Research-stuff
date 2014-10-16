@@ -5,13 +5,19 @@ class NN_Perceptron
   private int outputs[];           // resultant values after matrixcalculation | rows
   private String strings[];       // output to KN once matrix has decided | rows
   
-  public static void main(String[] args){}
+  public static void main(String[] args){
+  NN_Perceptron x = new NN_Perceptron(3,3);
+  x.setStrings(0, "jump");
+  x.setStrings(1, "fly");
+  x.setStrings(2, "sleep");
   
-  void NN(int rows, int cols){
+  }
+  
+   NN_Perceptron(int rows, int cols){
     matrix = new int[rows][cols];
     inputs = new int[cols];
     outputs = new int[rows];
-    strings = new String[rows]; } //no need to actually set anything to 0?
+    strings = new String[rows]; }
   
   
   
@@ -55,18 +61,20 @@ class NN_Perceptron
   void think(){
     int f = 0;
     for(int i = 0; i < matrix.length; i++) {
-      for(int j = 0; j < matrix[i].length; j++) {
-        f = matrix[i][j]*inputs[j];
-        outputs[j] = f;
-      } } }
+      f = matrix[i][0]*inputs[0] + matrix[i][1]*inputs[1] + matrix[i][2]*inputs[2];
+      setOutput(i, f);
+      } } 
         
         
         String getMaxResult() { 
           int max = 0;
-          int index;
+          int index = 0;
           for (int i = 0; i < outputs.length; i++) {
-            if (outputs[i] > max) then (max == outputs[i]); /*index = i; */}
-          }
+            if (outputs[i] > max) { 
+              max = outputs[i];
+              index = i;}
+          } 
+        return strings[index];}
         
         //String[] getThresholdResult(int threshold) { }
         
