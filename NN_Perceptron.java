@@ -1,4 +1,4 @@
-class NN_Perceptron
+class NN_Perceptron 
 {
   private int matrix[][];     // pattern recognizer, can you specify the size this way? | rows cols
   private int inputs[];               // external stimulus entering matrix | cols
@@ -11,9 +11,39 @@ class NN_Perceptron
   x.setStrings(1, "fly");
   x.setStrings(2, "sleep");
   
+  int first[] = {1,1,1};
+  x.programMatrixRow(0, first);
+  int second[] = {3,4,5};
+  x.programMatrixRow(1, second);
+  int third[] = {6,7,8};
+  x.programMatrixRow(2, third);
+  
+  x.setInput(0, 1);
+  x.setInput(1,1);
+  x.setInput(2,1);
+ 
+  //x.printGrid();
+  x.think();
+  /*for(int i = 0; i < x.outputs.length; i++){
+    System.out.print(x.outputs[i] + " ");}*/
+  System.out.println(x.getMaxResult());
   }
   
-   NN_Perceptron(int rows, int cols){
+public void printGrid()
+{
+   for(int i = 0; i < matrix.length; i++)
+   {
+      for(int j = 0; j < matrix[i].length; j++)
+      {
+         System.out.print(matrix[i][j] + " " );
+      }
+      System.out.println();
+   }
+}
+  
+  
+  
+  NN_Perceptron(int rows, int cols){
     matrix = new int[rows][cols];
     inputs = new int[cols];
     outputs = new int[rows];
@@ -76,6 +106,8 @@ class NN_Perceptron
           } 
         return strings[index];}
         
-        //String[] getThresholdResult(int threshold) { }
-        
+        String[] getThresholdResult(int threshold) { }
+        //arraylist of strings hurr
+        for(int i = 0; i < outputs.length; i++) {
+          if (outputs[i] >= threshold
   } 
