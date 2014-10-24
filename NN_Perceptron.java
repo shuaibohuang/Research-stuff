@@ -1,3 +1,5 @@
+import java.util.*;
+
 class NN_Perceptron 
 {
   private int matrix[][];     // pattern recognizer, can you specify the size this way? | rows cols
@@ -6,40 +8,41 @@ class NN_Perceptron
   private String strings[];       // output to KN once matrix has decided | rows
   
   public static void main(String[] args){
-  NN_Perceptron x = new NN_Perceptron(3,3);
-  x.setStrings(0, "jump");
-  x.setStrings(1, "fly");
-  x.setStrings(2, "sleep");
-  
-  int first[] = {1,1,1};
-  x.programMatrixRow(0, first);
-  int second[] = {3,4,5};
-  x.programMatrixRow(1, second);
-  int third[] = {6,7,8};
-  x.programMatrixRow(2, third);
-  
-  x.setInput(0, 1);
-  x.setInput(1,1);
-  x.setInput(2,1);
- 
-  //x.printGrid();
-  x.think();
-  /*for(int i = 0; i < x.outputs.length; i++){
-    System.out.print(x.outputs[i] + " ");}*/
-  System.out.println(x.getMaxResult());
+    NN_Perceptron x = new NN_Perceptron(3,3);
+    x.setStrings(0, "jump");
+    x.setStrings(1, "fly");
+    x.setStrings(2, "sleep");
+    
+    int first[] = {1,1,1};
+    x.programMatrixRow(0, first);
+    int second[] = {3,4,5};
+    x.programMatrixRow(1, second);
+    int third[] = {6,7,8};
+    x.programMatrixRow(2, third);
+    
+    x.setInput(0, 1);
+    x.setInput(1,1);
+    x.setInput(2,1);
+    
+    //x.printGrid();
+    x.think();
+    /*for(int i = 0; i < x.outputs.length; i++){
+     System.out.print(x.outputs[i] + " ");}*/
+    //System.out.println(x.getMaxResult());
+    System.out.println(x.getThresholdResult(1));
   }
   
-public void printGrid()
-{
-   for(int i = 0; i < matrix.length; i++)
-   {
+  public void printGrid()
+  {
+    for(int i = 0; i < matrix.length; i++)
+    {
       for(int j = 0; j < matrix[i].length; j++)
       {
-         System.out.print(matrix[i][j] + " " );
+        System.out.print(matrix[i][j] + " " );
       }
       System.out.println();
-   }
-}
+    }
+  }
   
   
   
@@ -93,21 +96,29 @@ public void printGrid()
     for(int i = 0; i < matrix.length; i++) {
       f = matrix[i][0]*inputs[0] + matrix[i][1]*inputs[1] + matrix[i][2]*inputs[2];
       setOutput(i, f);
-      } } 
-        
-        
-        String getMaxResult() { 
-          int max = 0;
-          int index = 0;
-          for (int i = 0; i < outputs.length; i++) {
-            if (outputs[i] > max) { 
-              max = outputs[i];
-              index = i;}
-          } 
-        return strings[index];}
-        
-        String[] getThresholdResult(int threshold) { }
-        //arraylist of strings hurr
-        for(int i = 0; i < outputs.length; i++) {
-          if (outputs[i] >= threshold
-  } 
+    } } 
+  
+  
+  String getMaxResult() { 
+    int max = 0;
+    int index = 0;
+    for (int i = 0; i < outputs.length; i++) {
+      if (outputs[i] > max) { 
+        max = outputs[i];
+        index = i;}
+    } 
+    return strings[index];}
+  
+  String[] getThresholdResult(int threshold) { 
+  ArrayList<String> thresh = new ArrayList<String>();
+  int len = 0;
+    for(int i = 0; i < outputs.length; i++) {
+      if (outputs[i]==(threshold)){
+        thresh.add(strings[i]);
+        len++;
+      } }
+    String[] result = new String[len];
+    for(int j = 0; j < len; j++) {
+      result[j] = thresh.get(j); }
+    return result; } }
+      
