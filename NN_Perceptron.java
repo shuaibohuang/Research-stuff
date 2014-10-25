@@ -2,7 +2,7 @@ import java.util.*;
 
 class NN_Perceptron 
 {
-  private int matrix[][];     // pattern recognizer, can you specify the size this way? | rows cols
+  private int matrix[][];     // pattern recognizer, | rows cols
   private int inputs[];               // external stimulus entering matrix | cols
   private int outputs[];           // resultant values after matrixcalculation | rows
   private String strings[];       // output to KN once matrix has decided | rows
@@ -24,15 +24,9 @@ class NN_Perceptron
     x.setInput(1,1);
     x.setInput(2,1);
     
-    //x.printGrid();
-    x.think();
-    /*for(int i = 0; i < x.outputs.length; i++){
-     System.out.print(x.outputs[i] + " ");}*/
-    //System.out.println(x.getMaxResult());
-    System.out.println(x.getThresholdResult(1));
-  }
+    x.think(); } 
   
-  public void printGrid()
+  /*public void printGrid()
   {
     for(int i = 0; i < matrix.length; i++)
     {
@@ -42,7 +36,7 @@ class NN_Perceptron
       }
       System.out.println();
     }
-  }
+  }*/
   
   
   
@@ -113,12 +107,10 @@ class NN_Perceptron
   ArrayList<String> thresh = new ArrayList<String>();
   int len = 0;
     for(int i = 0; i < outputs.length; i++) {
-      if (outputs[i]==(threshold)){
+      if (outputs[i]>=(threshold)){
         thresh.add(strings[i]);
         len++;
       } }
-    String[] result = new String[len];
-    for(int j = 0; j < len; j++) {
-      result[j] = thresh.get(j); }
+    String result[] = thresh.toArray(new String[thresh.size()]);
     return result; } }
       
