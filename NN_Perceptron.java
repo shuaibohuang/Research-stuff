@@ -4,7 +4,7 @@ class NN_Perceptron
 {
   private int matrix[][];     // pattern recognizer, | rows cols
   private int inputs[];               // external stimulus entering matrix | cols
-  private int outputs[];           // resultant values after matrixcalculation | rows
+  private int outputs[];         // resultant values after matrixcalculation | rows
   private String strings[];       // output to KN once matrix has decided | rows
   
   public static void main(String[] args){
@@ -85,7 +85,7 @@ class NN_Perceptron
   // a,b,c are the integers in the matrix row
   // x,y,z are the integer from inputs[]
   
-  void think(){
+  void think(){ //fills up output array
     int f = 0;
     for(int i = 0; i < matrix.length; i++) {
       f = matrix[i][0]*inputs[0] + matrix[i][1]*inputs[1] + matrix[i][2]*inputs[2];

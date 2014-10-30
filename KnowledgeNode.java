@@ -22,7 +22,7 @@ class KnowledgeNode
 
  public bool isAssertable(); // True if activation>=threshold
  public bool isDeleteable(); // True is age==0
-*/
+ */
  public KnowledgeNode(String primaryTag , ArrayList<String> otherTags, int thresh) { //activation=0, age=1000
    tag = primaryTag;
    tags = otherTags;
