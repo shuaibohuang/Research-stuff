@@ -12,47 +12,22 @@ class KnowledgeNode
  private int threshold;  // When activation >= threshold then assert
 
  public void activate() {
-   //What is the formula
-    } //?
+   if (tag.equals("x")) {
+     activation+=1; } } //what formula to use for activation?
  
-// Increments activation based on a formula
- 
- public ArrayList assertTag() {
-   if ((wasAsserted == true)&&(age == 1000)) { 
-     return tags; }}// wasAsserted=true, age=1000, returns tags
- public void age()//what formula? :) ;  // Increments age based on a formula
- public void reset() {
-   wasAsserted = false;
-   activation = 0; }// wasAsserted=false, activation=0
-
- public boolean isAssertable(){
-   if(activation >= threshhold){
-     return true}
-   else{
-     return false;}
- }
- 
-       // True if activation>=threshold
- public boolean isDeleteable(){
-   if(age==0){
-     return true;}
-   else{
-     return false;}
- }
- 
-   // True is age==0
- */
- public KnowledgeNode(String primaryTag , ArrayList<String> otherTags, int thresh, int act, int old, boolean x) { //activation=0, age=1000
+/*// Increments activation based on a formula
+ public ArrayList assertTag(); // wasAsserted=true, age=1000, returns tags
+ public void age();  // Increments age based on a formula
+ public void reset();  // wasAsserted=false, activation=0
+ public bool isAssertable(); // True if activation>=threshold
+ public bool isDeleteable(); // True is age==0
+*/
+ public KnowledgeNode(String primaryTag , ArrayList<String> otherTags, int thresh) { //activation=0, age=1000
    tag = primaryTag;
    tags = otherTags;
    threshold = thresh;
-   activation = act;
-   age = old;
-   wasAsserted = x;
- }
+   /*activation = 0;
+    age = 1000;*/ }
  
  
  }
- 
- 
- 
