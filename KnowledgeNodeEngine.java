@@ -42,22 +42,29 @@ class KnowledgeNodeEngine
  }
  
  // Returns a node based on the search tag, uses hash()
- 
- public void think(ArrayList input, int effort) {
-   for(int i = 0; i<input.size(); i++){ 
-    if ((hashTable(hash(input.get(i))).tag).equals(inputs.get(i))) {
-      KnowledgeNode x = hashTable.get(i);
-      x.wasAsserted = true;
-      effort = effort - 1;
-      x.activation = x.activation + 1;
-      hashTable.set(i,x);
-      } } }
-      
-  
+ public void think(ArrayList input, int effort){// Does a spread of activation search
+   for(int i = 0; i < input.size(); i++){
+     KnowledgeNode node = find(input.get(i));//use the tag from the arraylist input and use find() to return the node
+     //with that tag in the hashtable
+     node.activation++;//increase its activation by 1
+     if(i==effort){//if we reach effort then end the method.
+       return;
+     }
+   }
  }
  
-/* // Does a spread of activation search
- public void thinkAge(ArrayList input, int effort, int maxAge);
+ public void thinkAge(ArrayList input, int effort, int maxAge){
+    for(int i = 0; i < input.size(); i++){
+     KnowledgeNode node = find(input.get(i));//use the tag from the arraylist input and use find() to return the node
+     if(node.age < maxAge){//with that tag in the hashtable
+       node.activation++;//increase its activation by 1
+     }
+     if(i==effort){//if we reach effort then end the method.
+       return;
+     }
+   }
+ }
+ 
 
  // Things to implement later
  private ArrayList<KnowledgeNode> ageLevels[]; // Entire database of knowledge nodes indexed by age
@@ -65,17 +72,19 @@ class KnowledgeNodeEngine
  public void thinkBackwards(...);
 }
 
-How think() works:
+/*How think() works:
  The parameter ArrayList input is a series of tags (like in an expert system) used to start the 
  cascading search.  These input tags will increase the activation of the matching nodes in the
  database of knowledge nodes.  Those nodes that become asserted add their ArrayList tags to the
  asserted list.  This continues until no other nodes are asserted or until the parameter effort
  is reached, at which point search stops.  The answer is assumed to be contained within the
  ArrayList asserted.  We then need to look for it (not covered here).
+
  The parameter effort indicates the number of iterations we are interested in performing the think()
  operation.  If effort==0 then we will think() until quiecence.  If effort equals an integer value
- then we will iterate those many times. Effort must be >= 0.
+ then we will iterate those many times. Effort must be >= 0. 
 
  This uses the hashTable as it's primary search medium.
+
 How thinkAge() works:
  Similar to think() but nodes older than the parameter maxAge are ignored (ie. age<maxAge). */
