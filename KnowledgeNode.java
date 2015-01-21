@@ -2,14 +2,14 @@ import java.util.*;
 
 class KnowledgeNode
 {
- private boolean wasAsserted; // True=asserted, False=still assertable
+ public boolean wasAsserted; // True=asserted, False=still assertable
 
  private String tag;  // primary key
  private ArrayList<String> tags; // formatted strings
 
- private int age;  // 0-1000, 0=delete, 1000=asserted
- private int activation;  // Default 0, increment at each activation
- private int threshold;  // When activation >= threshold then assert
+ public int age;  // 0-1000, 0=delete, 1000=asserted
+ public int activation;  // Default 0, increment at each activation
+ public int threshold;  // When activation >= threshold then assert
 
  public void activate() {
    if (tag.equals("x")) {
