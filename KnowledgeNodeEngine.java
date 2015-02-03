@@ -47,14 +47,14 @@ class KnowledgeNodeEngine
  // Returns a node based on the search tag, uses hash()
  public void think(ArrayList<String> input, int effort){ 
 // Does a spread of activation search
-   ArrayList<KnowledgeNode> actInput = new ArrayList<KnowledgeNode>();
+   ArrayList<String> actInput = new ArrayList<String>();
    for(int e = 0; e < effort; e++) {
      for(int i = 0; i < input.size(); i++) {
        int hashIndex = find(input.get(i));
        if (hashIndex != -1) {
          hashTable.get(hashIndex).activation++;
          if (hashTable.get(hashIndex).activation > hashTable.get(hashIndex).threshold) {
-           
+           actInput.add(hashTable.get(hashIndex).tag) } //this only adds the primary tag to the activated inputs 
        } } } }
          
    

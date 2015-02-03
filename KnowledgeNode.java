@@ -2,10 +2,11 @@ import java.util.*;
 
 class KnowledgeNode
 {
- public boolean wasAsserted; // True=asserted, False=still assertable
+ 
+  public boolean wasAsserted; // True=asserted, False=still assertable
 
- private String tag;  // primary key
- private ArrayList<String> tags; // formatted strings
+ public String tag;  // primary key
+ public ArrayList<String> tags; // formatted strings
 
  public int age;  // 0-1000, 0=delete, 1000=asserted
  public int activation;  // Default 0, increment at each activation
