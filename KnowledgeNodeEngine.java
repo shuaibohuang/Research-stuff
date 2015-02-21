@@ -36,7 +36,7 @@ class KnowledgeNodeEngine
 // Inserts the new node into hashTable & ageLevels
  
  
- public int find(String tag) //modify method to return index instead?
+ public int find(String tag)
  { //what to return when it can't find the tag?
    if (hashTable.contains(tag)) {
      return hash(tag); }
@@ -54,26 +54,30 @@ class KnowledgeNodeEngine
        if (hashIndex != -1) {
          hashTable.get(hashIndex).activation++;
          if (hashTable.get(hashIndex).activation > hashTable.get(hashIndex).threshold) {
-           actInput.add(hashTable.get(hashIndex).tag) } //this only adds the primary tag to the activated inputs 
+           for(int j = 0; j < hashTable.get(hashIndex).tags.size(); j++) {
+            actInput.add(hashTable.get(hashIndex).tags.get(j)); //this ridiculous piece of code basically adds all the tags of the KN into the actInput arraylist
+           } }
        } } } }
-         
+        //what do we do with actInput? 
    
  
  public void thinkAge(ArrayList input, int effort, int maxAge){
+  ArrayList<String> actInput = new ArrayList<String>();
+  for(int e = 0; e < effort; e++) {
     for(int i = 0; i < input.size(); i++){
-     KnowledgeNode node = find(input.get(i));//use the tag from the arraylist input and use find() to return the node
-     if(node.age < maxAge){//with that tag in the hashtable
-       node.activation++;//increase its activation by 1
-       
-     }
-     if(i==effort){//if we reach effort then end the method.
-       return;
+      int hashIndex = find(input.get(i));
+      if (hashIndex != -1){ // //do we only activate if <= maxAge?
+        hashTable.get(hashIndex).activation++; //do we increment act or age?
+        if (hashTable.get(hashIndex).age <= maxAge) {
+          for(int j = 0; j < hashTable.get(hashIndex).tags.size(); j++) {
+            actInput.add(hashTable.get(hashIndex).tags.get(j));
+           }
+      }
      }
    }
  }
 }
- 
-
+}
  /* Things to implement later
  private ArrayList<KnowledgeNode> ageLevels[]; // Entire database of knowledge nodes indexed by age
  public void thinkForwards(...);
