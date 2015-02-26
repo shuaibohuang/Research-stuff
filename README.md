@@ -1,4 +1,4 @@
-# Research-stuff
+# The Prometheus Project
 Code for "The Brain Sub Project" of McGill Professor Joseph Vybihal's "The Prometheus Project" which consists three other sub projects, The Virtual World Simulator, The Robotics Projects, and Special Explorations. 
 
 Primarily Prometheus is about animal and human intelligence and how we might be able to duplicate or simulate it on a compute. This projects provides two testing platforms: a world simulator and three robots.
